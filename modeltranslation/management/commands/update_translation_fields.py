@@ -26,6 +26,8 @@ class Command(BaseCommand):
                 # We'll only update fields which do not have an existing value
                 q = Q(**{def_lang_fieldname: None})
                 field = model._meta.get_field(field_name)
+                if field.get_internal_type() == 'JsonBField': # support for jsonbfields
+                    q |= Q(**{def_lang_fieldname: {}})
                 if field.empty_strings_allowed:
                     q |= Q(**{def_lang_fieldname: ""})
 
