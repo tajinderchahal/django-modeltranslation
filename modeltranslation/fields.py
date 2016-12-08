@@ -31,7 +31,6 @@ SUPPORTED_FIELDS = (
     fields.files.FileField,
     fields.files.ImageField,
     fields.related.ForeignKey,
-    fields.JsonBField,
     # Above implies also OneToOneField
 )
 
